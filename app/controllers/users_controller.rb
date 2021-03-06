@@ -44,7 +44,7 @@ class UsersController < ApplicationController
     my_room_number = @current_user_entry.pluck(:room_id)
     room_number = @other_user_entry.pluck(:room_id)
     room_intersection = room_number & my_room_number
-    if @user.id != current_user.id
+    if user.id != current_user.id
       if !room_intersection.empty?
         @isRoom = true
         @room_id = room_intersection[0]
