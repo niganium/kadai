@@ -2,7 +2,7 @@
 lock "~> 3.16.0"
 
 set :application, "kadai"
-set :repo_url, "https://github.com/niganium/kadai.git"
+set :repo_url, "git@github.com:niganium/kadai.git"
 set :deploy_to, "/home/ec2-user/kadai"
 set :rbenv_ruby, '2.5.7'
 set :linked_files, %w{config/master.key .env}
