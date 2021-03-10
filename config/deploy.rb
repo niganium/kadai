@@ -7,6 +7,7 @@ set :deploy_to, "/home/ec2-user/kadai"
 set :rbenv_ruby, '2.5.7'
 set :linked_files, %w{config/master.key .env}
 set :linked_files, fetch(:linked_files, []).push("config/master.key")
+append :linked_files, 'config/database.yml', 'config/master.key'
 set :pty, true
 append :linked_dirs, "log", "public", "tmp"
 
