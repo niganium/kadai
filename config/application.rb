@@ -5,7 +5,7 @@ require 'rails/all'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-
+ActiveSupport::MessageEncryptor.use_authenticated_message_encryption = true
 module Bookers2Ver2
   class Application < Rails::Application
     config.paths.add 'lib', eager_load: true

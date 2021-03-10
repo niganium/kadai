@@ -33,3 +33,4 @@
 /.env
 /shared
 /vendor/bundle/
+/repo
