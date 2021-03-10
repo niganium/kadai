@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @books = @user.books
     @book = Book.new
+    room_match_confirmation(@user)
   end
 
   def index
@@ -34,6 +35,24 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     unless @user == current_user
       redirect_to user_path(current_user)
+    end
+  end
+
+  def room_match_confirmation(user)
+    @current_user_entry = Entry.where(user_id: current_user.id)
+    @other_user_entry = Entry.where(user_id: user.id)
+    my_room_number = @current_user_entry.pluck(:room_id)
+    room_number = @other_user_entry.pluck(:room_id)
+    room_intersection = room_number & my_room_number
+    if user.id != current_user.id
+      if !room_intersection.empty?
+        @isRoom = true
+        @room_id = room_intersection[0]
+      else
+        @isRoom = false
+        @room = Room.new
+        @entry = Entry.new
+      end
     end
   end
 end

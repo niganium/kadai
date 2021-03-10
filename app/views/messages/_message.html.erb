@@ -1,0 +1,14 @@
+<% messages.each do |m| %>
+  <% if m.user == current_user %>
+    <div class="panel panel-default text-right">
+  <% else %>
+    <div class="panel panel-default">
+  <% end %>
+    <div class="panel-heading">
+      <p><%= m.user.name %></p>
+    </div>
+    <div class="panel-body">
+      <strong><%= m.content %></strong>
+    </div>
+  </div>
+<% end %>
